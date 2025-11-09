@@ -11,18 +11,14 @@ $routes->post('iniciar_sesion', 'UsuariosController::index');
 
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
 
-// Empleados
-$routes->get('empleados', 'EmpleadosController::index');
-$routes->get('eliminar_empleado/(:num)', 'EmpleadosController::eliminarEmpleado/$1');
-$routes->get('buscar_empleado/(:num)', 'EmpleadosController::buscarEmpleado/$1');
+<<<<<<< HEAD
+=======
+$routes->get('maestros', 'MaestrosController::index');
+$routes->post('agregar_maestro', 'MaestrosController::agregarMaestro');
+$routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1');
+$routes->get('buscar_maestro/(:num)', 'MaestrosController::buscarMaestro/$1'); 
+$routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
+>>>>>>> 696e38b0ad223af9ebb436608ac7950d3d2de0d3
 
-$routes->post('agregar_empleado', 'EmpleadosController::agregarEmpleado');
-$routes->post('modificar_empleado', 'EmpleadosController::modificarEmpleado');
-
-// grados
-$routes->get('grados', 'GradosController::index');
-$routes->get('eliminar_grado/(:num)', 'GradosController::eliminarGrado/$1');
-$routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
-
-$routes->post('agregar_grado', 'GradosController::agregarGrado');
-$routes->post('modificar_grado', 'GradosController::modificarGrado');
+$routes->get('estudiantes', 'EstudiantesController::index');
+$routes->post('agregar_estudiante', 'EstudiantesController::agregarEstudiante');

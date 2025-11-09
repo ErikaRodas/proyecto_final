@@ -30,25 +30,25 @@
                 <p class="lead">Bienvenido(a), <?= htmlspecialchars($nombre) ?>**</p>
                 <hr>
                 
-                <?php if ($tipo_usuario == 1): // Menú para ADMINISTRADOR (Tipo 1) ?>
+                <?php if ($tipo_usuario == 1): ?>
                     
                     <h3 class="mt-4 mb-3 text-success"> Gestión Completa (6 Tablas)</h3>
                     
                     <div class="list-group">
-                        <a href="<?= base_url('admin/maestros') ?>" class="list-group-item list-group-item-action list-group-item-success"> 1. Gestión de Maestros</a>
-                        <a href="<?= base_url('admin/estudiantes') ?>" class="list-group-item list-group-item-action list-group-item-success"> 2. Gestión de Estudiantes</a>
-                        <a href="<?= base_url('admin/grados') ?>" class="list-group-item list-group-item-action list-group-item-success"> 3. Gestión de Grados</a>
-                        <a href="<?= base_url('admin/materias') ?>" class="list-group-item list-group-item-action list-group-item-success"> 4. Gestión de Materias</a>
-                        <a href="<?= base_url('admin/calificaciones') ?>" class="list-group-item list-group-item-action list-group-item-success"> 5. Registro de Calificaciones</a>
-                        <a href="<?= base_url('admin/extracurriculares') ?>" class="list-group-item list-group-item-action list-group-item-success"> 6. Actividades Extracurriculares</a>
+                        <a href="<?= base_url('maestros') ?>" class="list-group-item list-group-item-action list-group-item-success"> 1. Gestión de Maestros</a>
+                        <a href="<?= base_url('estudiantes') ?>" class="list-group-item list-group-item-action list-group-item-success"> 2. Gestión de Estudiantes</a>
+                        <a href="<?= base_url('grados') ?>" class="list-group-item list-group-item-action list-group-item-success"> 3. Gestión de Grados</a>
+                        <a href="<?= base_url('materias') ?>" class="list-group-item list-group-item-action list-group-item-success"> 4. Gestión de Materias</a>
+                        <a href="<?= base_url('calificaciones') ?>" class="list-group-item list-group-item-action list-group-item-success"> 5. Registro de Calificaciones</a>
+                        <a href="<?= base_url('extracurriculares') ?>" class="list-group-item list-group-item-action list-group-item-success"> 6. Actividades Extracurriculares</a>
                     </div>
                 
-                <?php elseif ($tipo_usuario == 2): // Menú para ESTUDIANTE (Tipo 2) ?>
+                <?php elseif ($tipo_usuario == 2):  ?>
                     
                     <h3 class="mt-4 mb-3 text-info">Consulta de Información</h3>
                     
                     <div class="list-group">
-                        <a href="<?= base_url('alumno/calificaciones') ?>" class="list-group-item list-group-item-action list-group-item-info"> Ver Mis Calificaciones</a>
+                        <a href="<?= base_url('calificaciones') ?>" class="list-group-item list-group-item-action list-group-item-info"> Ver Mis Calificaciones</a>
                     </div>
                     
                 <?php endif; ?>

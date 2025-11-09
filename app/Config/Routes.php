@@ -11,13 +11,6 @@ $routes->post('iniciar_sesion', 'UsuariosController::index');
 
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
 
-// Empleados
-$routes->get('empleados', 'EmpleadosController::index');
-$routes->get('eliminar_empleado/(:num)', 'EmpleadosController::eliminarEmpleado/$1');
-$routes->get('buscar_empleado/(:num)', 'EmpleadosController::buscarEmpleado/$1');
-
-$routes->post('agregar_empleado', 'EmpleadosController::agregarEmpleado');
-$routes->post('modificar_empleado', 'EmpleadosController::modificarEmpleado');
 
 // grados
 $routes->get('grados', 'GradosController::index');

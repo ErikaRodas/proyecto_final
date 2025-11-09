@@ -20,6 +20,7 @@ $routes->post('calificaciones/guardar', 'CalificacionesController::guardar');
 $routes->get('calificaciones/eliminar/(:num)', 'CalificacionesController::eliminar/$1');
 $routes->get('calificaciones/editar/(:num)', 'CalificacionesController::editar/$1');
 $routes->get('calificaciones/buscar', 'CalificacionesController::buscar');
+$routes->post('calificaciones/resultado', 'CalificacionesController::resultado');
 $routes->post('calificaciones/actualizar', 'CalificacionesController::actualizar');
 
 $routes->get('maestros', 'MaestrosController::index');

@@ -26,3 +26,4 @@ $routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
 
 $routes->post('agregar_grado', 'GradosController::agregarGrado');
 $routes->post('modificar_grado', 'GradosController::modificarGrado');
+$routes->get('buscar_alumno/(:num)', 'EstudiantesController::buscarEstudiante/$1');

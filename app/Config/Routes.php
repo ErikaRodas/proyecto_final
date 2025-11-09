@@ -10,6 +10,8 @@ $routes->get('/', 'Home::index');
 $routes->post('iniciar_sesion', 'UsuariosController::index');
 
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
+<<<<<<< HEAD
+=======
 
 
 
@@ -34,11 +36,16 @@ $routes->get('calificaciones/buscar', 'CalificacionesController::buscar');
 $routes->post('calificaciones/resultado', 'CalificacionesController::resultado');
 $routes->post('calificaciones/actualizar', 'CalificacionesController::actualizar');
 
+>>>>>>> main
 $routes->get('maestros', 'MaestrosController::index');
 $routes->post('agregar_maestro', 'MaestrosController::agregarMaestro');
 $routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1');
 $routes->get('editar_maestro/(:num)', 'MaestrosController::buscarMaestro/$1'); 
 $routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
+<<<<<<< HEAD
+$routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
+$routes->post('agregar_estudiante', 'EstudiantesController::agregarEstudiante');
+=======
 
 $routes->get('materias', 'MateriasController::index');
 $routes->post('agregar_materia', 'MateriasController::agregarMateria');
@@ -60,3 +67,4 @@ $routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
 
 $routes->post('agregar_grado', 'GradosController::agregarGrado');
 $routes->post('modificar_grado', 'GradosController::modificarGrado');
+>>>>>>> main

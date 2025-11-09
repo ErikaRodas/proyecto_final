@@ -40,7 +40,11 @@
                 </div>
                 <div class="modal-body">
                     <!-- Formulario que apunta a la función 'agregarMaestro' del controlador -->
+
+                    <form action="<?=base_url('maestros/agregar');?>" method="post">
+
                     <form action="<?=base_url('agregar_maestro');?>" method="post">
+
                         <!-- Campos del formulario: -->
 
                         <label for="txt_nombre" class="form-label mt-2">Nombre(s)</label>

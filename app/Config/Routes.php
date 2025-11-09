@@ -12,7 +12,8 @@ $routes->post('iniciar_sesion', 'UsuariosController::index');
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
 
 // Rutas del CRUD de Calificaciones (Helary)
- 
+$routes->get('calificaciones', 'CalificacionesController::mostrar'); 
+$routes->get('calificaciones/mostrar', 'CalificacionesController::mostrar');
 $routes->get('calificaciones/nuevo', 'CalificacionesController::nuevo');
 $routes->post('calificaciones/guardar', 'CalificacionesController::guardar');
 

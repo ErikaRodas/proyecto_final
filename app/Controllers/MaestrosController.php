@@ -53,4 +53,32 @@ class MaestrosController extends BaseController
      
         return redirect()->to(base_url('maestros'));
     }
+
+    public function buscarMaestro($codigo_maestro)
+    {
+        $maestros = new MaestrosModel();
+        
+        $datos['maestro'] = $maestros->find($codigo_maestro);
+        
+        
+        return view('form_editar_maestro', $datos);
+    }
+    public function modificarMaestro()
+    {
+        $maestros = new MaestrosModel();
+        
+        $codigo_maestro = $this->request->getPost('txt_codigo_maestro');
+       
+        $datos = [
+            'nombre' => $this->request->getPost('txt_nombre'),
+            'apellido' => $this->request->getPost('txt_apellido'),
+            'direccion' => $this->request->getPost('txt_direccion'),
+            'email' => $this->request->getPost('txt_email')
+        ];
+        $maestros->update($codigo_maestro, $datos);
+        
+        session()->setFlashdata('msg_exito', 'Maestro (Código: '.$codigo_maestro.') modificado exitosamente.');
+        
+        return redirect()->to(base_url('maestros'));
+    }
 }

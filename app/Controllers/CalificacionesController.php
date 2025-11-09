@@ -5,6 +5,16 @@ use CodeIgniter\Controller;
 
 class CalificacionesController extends Controller
 {
+    public function mostrar()
+    {
+        $model = new CalificacionModel();
+        $datosCalificaciones = $model->findAll(); 
+
+        return view('calificaciones/calificaciones', [
+            'calificaciones' => $datosCalificaciones 
+        ]);
+    }
+
     public function nuevo()
     {
         return view('calificaciones/form_agregar_calificaciones');

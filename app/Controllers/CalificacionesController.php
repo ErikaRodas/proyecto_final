@@ -110,7 +110,7 @@ class CalificacionesController extends Controller
 
     public function buscar()
     {
-        return view('calificaciones/form_buscar_calificaciones');
+        return view('form_buscar_calificaciones');
     }
 
     public function resultado()
@@ -138,7 +138,7 @@ class CalificacionesController extends Controller
             $calificaciones = $model->findAll();
             $mensaje = 'Debe ingresar un término de búsqueda.';
         }
-        return view('calificaciones/calificaciones', [
+        return view('calificaciones', [
             'calificaciones' => $calificaciones,
             'mensaje' => $mensaje,
             'termino_busqueda_anterior' => $termino

@@ -43,4 +43,26 @@ class CalificacionesController extends Controller
             ]);
         }
     }
+
+    public function eliminar($id_calificacion = null)
+    {
+        if ($id_calificacion === null || !is_numeric($id_calificacion)) {
+            return redirect()->to('/calificaciones/mostrar')->with('error', 'ID de calificación no válido.');
+        }
+
+        $model = new CalificacionModel();
+        try {
+            if ($model->delete($id_calificacion)) {
+                return redirect()->to('/calificaciones/mostrar')->with('mensaje', '✅ Calificación ID ' . $id_calificacion . ' eliminada con éxito.');
+            } else {
+                if ($model->find($id_calificacion)) {
+                    return redirect()->to('/calificaciones/mostrar')->with('error', 'Ocurrió un error al intentar eliminar la calificación.');
+                } else {
+                    return redirect()->to('/calificaciones/mostrar')->with('error', '❌ La calificación ID ' . $id_calificacion . ' no fue encontrada.');
+                }
+            }
+        } catch (\Exception $e) {
+            return redirect()->to('/calificaciones/mostrar')->with('error', '⚠️ Error de base de datos al eliminar: ' . $e->getMessage());
+        }
+    }
 }

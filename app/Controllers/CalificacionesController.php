@@ -14,16 +14,20 @@ class CalificacionesController extends Controller
         $model = new CalificacionModel();
         $datosCalificaciones = $model->findAll(); 
 
+
         // La vista 'calificaciones' está en app/Views/calificaciones.php (corregido)
         return view('calificaciones', [ 
+
             'calificaciones' => $datosCalificaciones 
         ]);
     }
 
     public function nuevo()
     {
-        // Asumiendo que esta vista SÍ está en la subcarpeta 'calificaciones'
-        return view('calificaciones/form_agregar_calificaciones');
+
+     
+        return view('form_agregar_calificaciones');
+
     }
 
     public function guardar()
@@ -32,7 +36,7 @@ class CalificacionesController extends Controller
         $datos_post = $this->request->getPost();
 
         if (! $this->validate($model->validationRules, $model->validationMessages)) {
-            return view('calificaciones/form_agregar_calificaciones', [
+            return view('form_agregar_calificaciones', [
                 'validation' => $this->validator,
                 'datos_anteriores' => $datos_post
             ]);
@@ -43,7 +47,7 @@ class CalificacionesController extends Controller
             return redirect()->to('/calificaciones/mostrar')->with('mensaje', 'Calificación agregada con éxito. 👍');
 
         } catch (\Exception $e) {
-            return view('calificaciones/form_agregar_calificaciones', [
+            return view('form_agregar_calificaciones', [
                 'error_db' => 'Error al guardar. Revise que el Carné del Alumno y el Código de Materia existan en la base de datos.',
                 'datos_anteriores' => $datos_post 
             ]);
@@ -81,8 +85,10 @@ class CalificacionesController extends Controller
         if (empty($calificacion)) {
             return redirect()->to('/calificaciones/mostrar')->with('error', '❌ Calificación no encontrada para edición.');
         }
-        // Asumiendo que esta vista SÍ está en la subcarpeta 'calificaciones'
-        return view('calificaciones/form_editar_calificaciones', [
+
+
+        return view('form_editar_calificaciones', [
+
             'calificacion' => $calificacion
         ]);
     }
@@ -94,7 +100,7 @@ class CalificacionesController extends Controller
         $id_calificacion = $datos_post['id_calificacion'] ?? null;
 
         if (! $this->validate($model->validationRules, $model->validationMessages)) {
-            return view('calificaciones/form_editar_calificaciones', [
+            return view('form_editar_calificaciones', [
                 'validation' => $this->validator,
                 'calificacion' => $datos_post 
             ]);
@@ -108,7 +114,7 @@ class CalificacionesController extends Controller
         } catch (\Exception $e) {
             $mensajeError = 'Error al actualizar. Revise que el Carné y el Código de Materia sigan siendo válidos.';
             
-            return view('calificaciones/form_editar_calificaciones', [
+            return view('form_editar_calificaciones', [
                 'error_db' => $mensajeError,
                 'calificacion' => $datos_post 
             ]);

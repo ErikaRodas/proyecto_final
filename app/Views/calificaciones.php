@@ -185,6 +185,11 @@
                                 <a href="<?= base_url('calificaciones/editar/' . $calificacion['id_calificacion']) ?>">
                                     <button class="btn-modificar-fila">✏️ Modificar</button>
                                 </a>
+
+                                <a href="<?= base_url('calificaciones/eliminar/' . $calificacion['id_calificacion']) ?>"
+                                    onclick="return confirm('¿Está seguro de que desea eliminar esta calificación?');">
+                                    <button class="btn-eliminar-fila">🗑️ Eliminar</button>
+                                </a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

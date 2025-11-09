@@ -17,7 +17,6 @@ $routes->get('calificaciones/mostrar', 'CalificacionesController::mostrar');
 $routes->get('calificaciones/nuevo', 'CalificacionesController::nuevo');
 $routes->post('calificaciones/guardar', 'CalificacionesController::guardar');
 
-// Rutas placeholder para las funcionalidades pendientes (Eliminar, Modificar, Buscar, Informe)
 $routes->get('calificaciones/eliminar/(:num)', 'CalificacionesController::eliminar/$1');
 $routes->get('calificaciones/editar/(:num)', 'CalificacionesController::editar/$1');
 $routes->get('calificaciones/buscar', 'CalificacionesController::buscar');

@@ -123,9 +123,9 @@ class CalificacionesController extends Controller
 
     public function buscar()
     {
-        // Asumiendo que esta vista SÍ está en la subcarpeta 'calificaciones'
-        return view('calificaciones/form_buscar_calificaciones');
-    }
+
+        return view('form_buscar_calificaciones');
+
 
     public function resultado()
     {
@@ -152,9 +152,8 @@ class CalificacionesController extends Controller
             $calificaciones = $model->findAll();
             $mensaje = 'Debe ingresar un término de búsqueda.';
         }
-        
-        // LÍNEA CORREGIDA: Apunta a app/Views/calificaciones.php
-        return view('calificaciones', [ 
+
+        return view('calificaciones', [
             'calificaciones' => $calificaciones,
             'mensaje' => $mensaje,
             'termino_busqueda_anterior' => $termino

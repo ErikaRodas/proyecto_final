@@ -11,6 +11,7 @@ $routes->post('iniciar_sesion', 'UsuariosController::index');
 
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
 
+<<<<<<< HEAD
 // Rutas del CRUD de Calificaciones (Helary)
 $routes->get('calificaciones', 'CalificacionesController::mostrar'); 
 $routes->get('calificaciones/mostrar', 'CalificacionesController::mostrar');
@@ -24,6 +25,28 @@ $routes->post('calificaciones/resultado', 'CalificacionesController::resultado')
 $routes->post('calificaciones/actualizar', 'CalificacionesController::actualizar');
 
 // Maestros
+=======
+
+// Empleados
+$routes->get('empleados', 'EmpleadosController::index');
+$routes->get('eliminar_empleado/(:num)', 'EmpleadosController::eliminarEmpleado/$1');
+$routes->get('buscar_empleado/(:num)', 'EmpleadosController::buscarEmpleado/$1');
+
+$routes->post('agregar_empleado', 'EmpleadosController::agregarEmpleado');
+$routes->post('modificar_empleado', 'EmpleadosController::modificarEmpleado');
+
+// grados
+$routes->get('grados', 'GradosController::index');
+$routes->get('eliminar_grado/(:num)', 'GradosController::eliminarGrado/$1');
+$routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
+
+$routes->post('agregar_grado', 'GradosController::agregarGrado');
+$routes->post('modificar_grado', 'GradosController::modificarGrado');
+
+//estudiantes 
+$routes->get('estudiantes', 'EstudiantesController::index');
+
+>>>>>>> feature/mostrar-todos-estudiantes
 $routes->get('maestros', 'MaestrosController::index');
 $routes->post('agregar_maestro', 'MaestrosController::agregarMaestro');
 $routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1');
@@ -43,6 +66,7 @@ $routes->get('eliminar_estudiante/(:num)', 'EstudiantesController::eliminarEstud
 $routes->get('buscar_estudiante/(:num)', 'EstudiantesController::buscarEstudiante/$1');
 
 $routes->post('agregar_estudiante', 'EstudiantesController::agregarEstudiante');
+<<<<<<< HEAD
 $routes->post('modificar_estudiante', 'EstudiantesController::modificarEstudiante');
 
 // Grados
@@ -52,3 +76,6 @@ $routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
 
 $routes->post('agregar_grado', 'GradosController::agregarGrado');
 $routes->post('modificar_grado', 'GradosController::modificarGrado');
+=======
+
+>>>>>>> feature/mostrar-todos-estudiantes

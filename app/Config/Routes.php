@@ -13,6 +13,14 @@ $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
 
 
 
+// grados
+$routes->get('grados', 'GradosController::index');
+$routes->get('eliminar_grado/(:num)', 'GradosController::eliminarGrado/$1');
+$routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
+
+$routes->post('agregar_grado', 'GradosController::agregarGrado');
+$routes->post('modificar_grado', 'GradosController::modificarGrado');
+
 
 // Rutas del CRUD de Calificaciones (Helary)
 $routes->get('calificaciones', 'CalificacionesController::mostrar'); 

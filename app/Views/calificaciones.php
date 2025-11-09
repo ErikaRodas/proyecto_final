@@ -146,10 +146,6 @@
                 <a href="<?= base_url('calificaciones/buscar') ?>">
                     <button class="btn-buscar">🔍 Búsqueda de Datos</button>
                 </a>
-
-                <a href="<?= base_url('calificaciones/informe') ?>">
-                    <button class="btn-informe">🖨️ Generar Informe</button>
-                </a>
             </div>
         </section>
 

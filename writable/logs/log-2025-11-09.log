@@ -1152,3 +1152,36 @@ in SYSTEMPATH\Session\Handlers\FileHandler.php on line 103.
 >>>>>>> main
 >>>>>>> 0f4a5035adee43789f280735dbbc6906047d7020
 >>>>>>> 8cda338b2446076022e282d7571739dc3c19615e
+DEBUG - 2025-11-09 21:38:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-09 21:38:41 --> Error: Class "App\Models\UsuariosModel" not found
+[Method: POST, Route: iniciar_sesion]
+in APPPATH\Controllers\UsuariosController.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UsuariosController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-09 21:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-09 21:39:10 --> Error: Class "App\Models\UsuariosModel" not found
+[Method: POST, Route: iniciar_sesion]
+in APPPATH\Controllers\UsuariosController.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UsuariosController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-09 21:54:28 --> ParseError: syntax error, unexpected identifier "    ", expecting "]"
+[Method: POST, Route: iniciar_sesion]
+in APPPATH\Models\UsuariosModel.php on line 17.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\proyecto_final\\app\\Models\\UsuariosModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\UsuariosModel')
+ 3 APPPATH\Controllers\UsuariosController.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\UsuariosModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UsuariosController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UsuariosController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-09 21:56:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

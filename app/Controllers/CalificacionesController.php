@@ -1,22 +1,28 @@
-<?php namespace App\Controllers;
+<?php 
+
+namespace App\Controllers;
 
 use App\Models\CalificacionModel;
 use CodeIgniter\Controller;
 
-class CalificacionesController extends Controller
+// Extender de Controller en lugar de BaseController ya que BaseController es abstracto
+class CalificacionesController extends Controller 
 {
+    // Muestra la vista de calificaciones (probablemente usada por el rol 'estudiante')
     public function mostrar()
     {
         $model = new CalificacionModel();
         $datosCalificaciones = $model->findAll(); 
 
-        return view('calificaciones/calificaciones', [
+        // La vista 'calificaciones' está en app/Views/calificaciones.php (corregido)
+        return view('calificaciones', [ 
             'calificaciones' => $datosCalificaciones 
         ]);
     }
 
     public function nuevo()
     {
+        // Asumiendo que esta vista SÍ está en la subcarpeta 'calificaciones'
         return view('calificaciones/form_agregar_calificaciones');
     }
 
@@ -75,6 +81,7 @@ class CalificacionesController extends Controller
         if (empty($calificacion)) {
             return redirect()->to('/calificaciones/mostrar')->with('error', '❌ Calificación no encontrada para edición.');
         }
+        // Asumiendo que esta vista SÍ está en la subcarpeta 'calificaciones'
         return view('calificaciones/form_editar_calificaciones', [
             'calificacion' => $calificacion
         ]);
@@ -110,6 +117,7 @@ class CalificacionesController extends Controller
 
     public function buscar()
     {
+        // Asumiendo que esta vista SÍ está en la subcarpeta 'calificaciones'
         return view('calificaciones/form_buscar_calificaciones');
     }
 
@@ -138,7 +146,9 @@ class CalificacionesController extends Controller
             $calificaciones = $model->findAll();
             $mensaje = 'Debe ingresar un término de búsqueda.';
         }
-        return view('calificaciones/calificaciones', [
+        
+        // LÍNEA CORREGIDA: Apunta a app/Views/calificaciones.php
+        return view('calificaciones', [ 
             'calificaciones' => $calificaciones,
             'mensaje' => $mensaje,
             'termino_busqueda_anterior' => $termino

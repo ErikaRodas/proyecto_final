@@ -19,3 +19,4 @@ $routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
 
 $routes->get('materias', 'MateriasController::index');
 $routes->post('agregar_materia', 'MateriasController::agregarMateria');
+$routes->get('eliminar_materia/(:segment)', 'MateriasController::eliminarMateria/$1');

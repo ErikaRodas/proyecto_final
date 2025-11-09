@@ -48,4 +48,16 @@ class MateriasController extends BaseController
             return redirect()->to(base_url('materias'));
         }
     }
+
+    public function eliminarMateria($codigo_materia)
+    {
+        $materiasModel = new MateriasModel();
+        
+        $materiasModel->delete($codigo_materia);
+        
+        session()->setFlashdata('msg_exito', 'Materia (Código: '.$codigo_materia.') eliminada exitosamente.');
+        
+        return redirect()->to(base_url('materias'));
+    }
+
 }

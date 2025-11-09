@@ -38,4 +38,19 @@ class MaestrosController extends BaseController
         
         return redirect()->to(base_url('maestros')); 
     }
+
+    public function eliminarMaestro($codigo_maestro)
+    {
+    
+        $maestros = new MaestrosModel();
+
+  
+        $maestros->delete($codigo_maestro);
+
+      
+        session()->setFlashdata('msg_exito', 'Maestro (Código: '.$codigo_maestro.') eliminado exitosamente.');
+
+     
+        return redirect()->to(base_url('maestros'));
+    }
 }

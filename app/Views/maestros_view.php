@@ -40,7 +40,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Formulario que apunta a la función 'agregarMaestro' del controlador -->
-                    <form action="<?=base_url('admin/maestros/agregar');?>" method="post">
+                    <form action="<?=base_url('maestros/agregar');?>" method="post">
                         <!-- Campos del formulario: -->
 
                         <label for="txt_nombre" class="form-label mt-2">Nombre(s)</label>
@@ -93,7 +93,8 @@
                     <td> <?=$maestro['direccion'];?> </td>
                     <td> <?=$maestro['email'];?> </td>
                     <td> 
-                        
+                        <a href="#" class="btn btn-sm btn-warning">Modificar</a>
+    <a href="<?= base_url('eliminar_maestro/'.$maestro['codigo_maestro']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar el registro <?= $maestro['codigo_maestro'] ?>? Esta acción no se puede deshacer.');">Eliminar</a>
                     </td>
                 </tr>
                 <?php

@@ -16,3 +16,4 @@ $routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1'
 $routes->get('buscar_maestro/(:num)', 'MaestrosController::buscarMaestro/$1'); 
 $routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
 $routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
+$routes->post('agregar_estudiante', 'EstudiantesController::agregarEstudiante');

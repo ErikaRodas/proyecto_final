@@ -92,7 +92,7 @@
                     <div class="modal-body">
                         
                         <div class="mb-3">
-                            <label for="txt_nombre_materia" class="form-label">Nombre de la Materia</label>
+                      <label for="txt_nombre_materia" class="form-label">Nombre de la Materia</label>
                             <input type="text" name="txt_nombre_materia" id="txt_nombre_materia" class="form-control" required>
                         </div>
                         

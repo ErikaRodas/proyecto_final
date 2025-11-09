@@ -1,23 +1,33 @@
-<?php namespace App\Controllers;
+<?php 
+
+namespace App\Controllers;
 
 use App\Models\CalificacionModel;
 use CodeIgniter\Controller;
 
-class CalificacionesController extends Controller
+// Extender de Controller en lugar de BaseController ya que BaseController es abstracto
+class CalificacionesController extends Controller 
 {
+    // Muestra la vista de calificaciones (probablemente usada por el rol 'estudiante')
     public function mostrar()
     {
         $model = new CalificacionModel();
         $datosCalificaciones = $model->findAll(); 
 
-        return view('calificaciones', [
+
+        // La vista 'calificaciones' está en app/Views/calificaciones.php (corregido)
+        return view('calificaciones', [ 
+
             'calificaciones' => $datosCalificaciones 
         ]);
     }
 
     public function nuevo()
     {
+
+     
         return view('form_agregar_calificaciones');
+
     }
 
     public function guardar()
@@ -75,7 +85,10 @@ class CalificacionesController extends Controller
         if (empty($calificacion)) {
             return redirect()->to('/calificaciones/mostrar')->with('error', '❌ Calificación no encontrada para edición.');
         }
+
+
         return view('form_editar_calificaciones', [
+
             'calificacion' => $calificacion
         ]);
     }
@@ -110,8 +123,9 @@ class CalificacionesController extends Controller
 
     public function buscar()
     {
+
         return view('form_buscar_calificaciones');
-    }
+
 
     public function resultado()
     {
@@ -138,6 +152,7 @@ class CalificacionesController extends Controller
             $calificaciones = $model->findAll();
             $mensaje = 'Debe ingresar un término de búsqueda.';
         }
+
         return view('calificaciones', [
             'calificaciones' => $calificaciones,
             'mensaje' => $mensaje,

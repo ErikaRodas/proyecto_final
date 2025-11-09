@@ -11,6 +11,18 @@ $routes->post('iniciar_sesion', 'UsuariosController::index');
 
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
 
+// Rutas del CRUD de Calificaciones (Helary)
+$routes->get('calificaciones', 'CalificacionesController::mostrar'); 
+$routes->get('calificaciones/mostrar', 'CalificacionesController::mostrar');
+$routes->get('calificaciones/nuevo', 'CalificacionesController::nuevo');
+$routes->post('calificaciones/guardar', 'CalificacionesController::guardar');
+
+$routes->get('calificaciones/eliminar/(:num)', 'CalificacionesController::eliminar/$1');
+$routes->get('calificaciones/editar/(:num)', 'CalificacionesController::editar/$1');
+$routes->get('calificaciones/buscar', 'CalificacionesController::buscar');
+$routes->post('calificaciones/resultado', 'CalificacionesController::resultado');
+$routes->post('calificaciones/actualizar', 'CalificacionesController::actualizar');
+
 $routes->get('maestros', 'MaestrosController::index');
 $routes->post('agregar_maestro', 'MaestrosController::agregarMaestro');
 $routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1');
@@ -19,4 +31,8 @@ $routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
 
 $routes->get('materias', 'MateriasController::index');
 $routes->post('agregar_materia', 'MateriasController::agregarMateria');
+<<<<<<< HEAD
 $routes->get('eliminar_materia/(:segment)', 'MateriasController::eliminarMateria/$1');
+=======
+
+>>>>>>> dbf5fdca1296c2cab35f30d85dfe4699afb2538f

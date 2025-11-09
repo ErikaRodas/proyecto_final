@@ -65,4 +65,46 @@ class CalificacionesController extends Controller
             return redirect()->to('/calificaciones/mostrar')->with('error', '⚠️ Error de base de datos al eliminar: ' . $e->getMessage());
         }
     }
+
+    public function editar($id_calificacion = null)
+    {
+        $model = new CalificacionModel();
+
+        $calificacion = $model->find($id_calificacion);
+
+        if (empty($calificacion)) {
+            return redirect()->to('/calificaciones/mostrar')->with('error', '❌ Calificación no encontrada para edición.');
+        }
+        return view('calificaciones/form_editar_calificaciones', [
+            'calificacion' => $calificacion
+        ]);
+    }
+
+    public function actualizar()
+    {
+        $model = new CalificacionModel();
+        $datos_post = $this->request->getPost();
+        $id_calificacion = $datos_post['id_calificacion'] ?? null;
+
+        if (! $this->validate($model->validationRules, $model->validationMessages)) {
+            return view('calificaciones/form_editar_calificaciones', [
+                'validation' => $this->validator,
+                'calificacion' => $datos_post 
+            ]);
+        }
+
+        try {
+            $model->save($datos_post);
+
+            return redirect()->to('/calificaciones/mostrar')->with('mensaje', '✅ Calificación ID ' . $id_calificacion . ' actualizada con éxito.');
+
+        } catch (\Exception $e) {
+            $mensajeError = 'Error al actualizar. Revise que el Carné y el Código de Materia sigan siendo válidos.';
+            
+            return view('calificaciones/form_editar_calificaciones', [
+                'error_db' => $mensajeError,
+                'calificacion' => $datos_post 
+            ]);
+        }
+    }
 }

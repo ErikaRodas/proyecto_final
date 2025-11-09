@@ -107,4 +107,41 @@ class CalificacionesController extends Controller
             ]);
         }
     }
+
+    public function buscar()
+    {
+        return view('calificaciones/form_buscar_calificaciones');
+    }
+
+    public function resultado()
+    {
+        $model = new CalificacionModel();
+        $datos_post = $this->request->getPost();
+        $termino = trim($datos_post['termino_busqueda'] ?? '');
+
+        $calificaciones = [];
+        $mensaje = '';
+
+        if (!empty($termino)) {
+            $calificaciones = $model->like('carne_alumno', $termino)
+                                    ->orLike('codigo_materia', $termino)
+                                    ->orLike('periodo', $termino)
+                                    ->findAll();
+                                    
+            if (empty($calificaciones)) {
+                $mensaje = 'No se encontraron resultados para: "' . esc($termino) . '".';
+            } else {
+                $mensaje = 'Resultados de la búsqueda para: "' . esc($termino) . '".';
+            }
+
+        } else {
+            $calificaciones = $model->findAll();
+            $mensaje = 'Debe ingresar un término de búsqueda.';
+        }
+        return view('calificaciones/calificaciones', [
+            'calificaciones' => $calificaciones,
+            'mensaje' => $mensaje,
+            'termino_busqueda_anterior' => $termino
+        ]);
+    }
 }

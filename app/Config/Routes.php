@@ -22,3 +22,9 @@ $routes->get('calificaciones/eliminar/(:num)', 'CalificacionesController::elimin
 $routes->get('calificaciones/editar/(:num)', 'CalificacionesController::editar/$1');
 $routes->get('calificaciones/buscar', 'CalificacionesController::buscar');
 $routes->get('calificaciones/informe', 'CalificacionesController::informe');
+
+$routes->get('maestros', 'MaestrosController::index');
+$routes->post('agregar_maestro', 'MaestrosController::agregarMaestro');
+$routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1');
+$routes->get('buscar_maestro/(:num)', 'MaestrosController::buscarMaestro/$1'); 
+$routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');

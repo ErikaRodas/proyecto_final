@@ -1185,8 +1185,13 @@ in APPPATH\Models\UsuariosModel.php on line 17.
  8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 DEBUG - 2025-11-09 21:56:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+<<<<<<< HEAD
 CRITICAL - 2025-11-09 22:13:51 --> ParseError: syntax error, unexpected token "<<", expecting end of file
 [Method: GET, Route: estudiantes]
+=======
+CRITICAL - 2025-11-09 22:13:39 --> ParseError: syntax error, unexpected token "<<", expecting end of file
+[Method: GET, Route: /]
+>>>>>>> main
 in APPPATH\Config\Routes.php on line 14.
  1 SYSTEMPATH\CodeIgniter.php(821): CodeIgniter\Router\RouteCollection->loadRoutes()
  2 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(null)
@@ -1194,6 +1199,7 @@ in APPPATH\Config\Routes.php on line 14.
  4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+<<<<<<< HEAD
 CRITICAL - 2025-11-09 22:21:15 --> ParseError: syntax error, unexpected token "===", expecting "{"
 [Method: GET, Route: estudiantes]
 in APPPATH\Controllers\EstudiantesController.php on line 8.
@@ -1231,3 +1237,5 @@ in APPPATH\Controllers\CalificacionesController.php on line 130.
  7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+=======
+>>>>>>> main

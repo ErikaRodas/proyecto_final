@@ -10,19 +10,6 @@ $routes->get('/', 'Home::index');
 $routes->post('iniciar_sesion', 'UsuariosController::index');
 
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
-<<<<<<< HEAD
-=======
-
-
-
-// grados
-$routes->get('grados', 'GradosController::index');
-$routes->get('eliminar_grado/(:num)', 'GradosController::eliminarGrado/$1');
-$routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
-
-$routes->post('agregar_grado', 'GradosController::agregarGrado');
-$routes->post('modificar_grado', 'GradosController::modificarGrado');
-
 
 // Rutas del CRUD de Calificaciones (Helary)
 $routes->get('calificaciones', 'CalificacionesController::mostrar'); 
@@ -36,17 +23,14 @@ $routes->get('calificaciones/buscar', 'CalificacionesController::buscar');
 $routes->post('calificaciones/resultado', 'CalificacionesController::resultado');
 $routes->post('calificaciones/actualizar', 'CalificacionesController::actualizar');
 
->>>>>>> main
+// Maestros
 $routes->get('maestros', 'MaestrosController::index');
 $routes->post('agregar_maestro', 'MaestrosController::agregarMaestro');
 $routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1');
 $routes->get('editar_maestro/(:num)', 'MaestrosController::buscarMaestro/$1'); 
 $routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
-<<<<<<< HEAD
-$routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
-$routes->post('agregar_estudiante', 'EstudiantesController::agregarEstudiante');
-=======
 
+//Materias
 $routes->get('materias', 'MateriasController::index');
 $routes->post('agregar_materia', 'MateriasController::agregarMateria');
 $routes->get('eliminar_materia/(:segment)', 'MateriasController::eliminarMateria/$1');
@@ -60,11 +44,11 @@ $routes->get('buscar_estudiante/(:num)', 'EstudiantesController::buscarEstudiant
 
 $routes->post('agregar_estudiante', 'EstudiantesController::agregarEstudiante');
 $routes->post('modificar_estudiante', 'EstudiantesController::modificarEstudiante');
-/ grados
+
+// Grados
 $routes->get('grados', 'GradosController::index');
 $routes->get('eliminar_grado/(:num)', 'GradosController::eliminarGrado/$1');
 $routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
 
 $routes->post('agregar_grado', 'GradosController::agregarGrado');
 $routes->post('modificar_grado', 'GradosController::modificarGrado');
->>>>>>> main

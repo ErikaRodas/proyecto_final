@@ -7,6 +7,8 @@
     <!-- Librerías de Bootstrap y Íconos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome para el ícono de Modificar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="bg-light">
 
@@ -15,22 +17,25 @@
     <h1 class="p-3 mb-4 rounded text-center text-dark bg-info bg-opacity-75 shadow-sm">
         <i class="bi bi-person-badge-fill me-2"></i> Gestión de Maestros
     </h1>
-    
-  
-    <?php if (session()->getFlashdata('msg_exito')): ?>
+     <?php if (session()->getFlashdata('msg_exito')): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?= session()->getFlashdata('msg_exito') ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
 
-
+    <!-- SECCIÓN DE BOTONES: AQUÍ ESTÁ EL BOTÓN DE BUSCAR -->
     <div class="d-flex justify-content-end mb-3">
+        <!-- BOTÓN DE BÚSQUEDA (NUEVO) -->
+        <a href="<?= base_url('maestros/buscar') ?>" class="btn btn-warning fw-bold text-dark shadow me-2">
+            <i class="bi bi-search me-2"></i> Buscar Maestro
+        </a>
+
+        <!-- BOTÓN AGREGAR MAESTRO (EXISTENTE) -->
         <button type="button" class="btn btn-info fw-bold text-dark shadow" data-bs-toggle="modal" data-bs-target="#agregarMaestroModal">
             <i class="bi bi-person-fill-add me-2"></i> Agregar Maestro
         </button>
     </div>
-
     <div class="modal fade" id="agregarMaestroModal" tabindex="-1" aria-labelledby="agregarMaestroModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content border-0 shadow-lg">
@@ -39,14 +44,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Formulario que apunta a la función 'agregarMaestro' del controlador -->
-
-                    <form action="<?=base_url('maestros/agregar');?>" method="post">
-
-                    <form action="<?=base_url('agregar_maestro');?>" method="post">
-
+                    <!-- FORMULARIO CORREGIDO: APUNTA A LA RUTA CORRECTA DE GUARDAR -->
+                    <form action="<?=base_url('maestros/guardar');?>" method="post"> 
+                        
                         <!-- Campos del formulario: -->
-
                         <label for="txt_nombre" class="form-label mt-2">Nombre(s)</label>
                         <input type="text" name="txt_nombre" id="txt_nombre" class="form-control" required>
 
@@ -70,10 +71,17 @@
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-12">
+            <!-- MENSAJE DE RESULTADO DE BÚSQUEDA (opcional) -->
+            <?php if (isset($mensaje)): ?>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <?= $mensaje ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
+
             <table class="table table-striped table-hover shadow-sm">
                 <thead>
                     <tr class="table-info text-dark">
@@ -87,8 +95,10 @@
                 </thead>
             <tbody>
                 <?php 
-            
-                foreach ($datos as $maestro) {
+                // Usamos $datos o $maestros para asegurar que funcione al venir de la búsqueda.
+                $lista_maestros = $datos ?? $maestros ?? [];
+
+                foreach ($lista_maestros as $maestro) {
                 ?>
                 <tr>
                     <td> <?=$maestro['codigo_maestro'];?> </td>
@@ -97,22 +107,27 @@
                     <td> <?=$maestro['direccion'];?> </td>
                     <td> <?=$maestro['email'];?> </td>
                     <td> 
-                        
-    <a href="<?= base_url('eliminar_maestro/'.$maestro['codigo_maestro']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar el registro <?= $maestro['codigo_maestro'] ?>? Esta acción no se puede deshacer.');">Eliminar</a>
-                   <a href="<?= base_url('editar_maestro/' . $maestro['codigo_maestro']); ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Modificar</a>
-</td>
+                        <!-- Botón Eliminar -->
+    <a href="<?= base_url('maestros/eliminar/' .$maestro['codigo_maestro']) ?>" class="btn btn-sm btn-danger me-1" onclick="return confirm('¿Está seguro de eliminar el registro <?= $maestro['codigo_maestro'] ?>? Esta acción no se puede deshacer.');">Eliminar</a>
+         
+    <a href="<?= base_url('maestros/editar/' . $maestro['codigo_maestro']); ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Modificar</a>
+                    </td>
                 </tr>
                 <?php
                 }
                 ?>
+
             </tbody>
             </table>
+            <!-- Mostrar mensaje si no hay resultados después de una búsqueda -->
+            <?php if (isset($mensaje) && count($lista_maestros) === 0): ?>
+                <p class="text-center text-muted">Intente con un término de búsqueda diferente o <a href="<?= base_url('maestro/mostrar') ?>">vea el listado completo</a>.</p>
+            <?php endif; ?>
             </div>
         </div>
     </div>
 </div> 
 
- 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

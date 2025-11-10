@@ -97,14 +97,7 @@ class CalificacionesController extends Controller
     {
         $model = new CalificacionModel();
         $datos_post = $this->request->getPost();
-        $id_calificacion = $datos_post['id_calificacion'] ?? null;
-
-        if (! $this->validate($model->validationRules, $model->validationMessages)) {
-            return view('form_editar_calificaciones', [
-                'validation' => $this->validator,
-                'calificacion' => $datos_post 
-            ]);
-        }
+        $id_calificacion = $datos_post['id'] ?? null;
 
         try {
             $model->save($datos_post);
@@ -125,6 +118,7 @@ class CalificacionesController extends Controller
     {
 
         return view('form_buscar_calificaciones');
+    }
 
 
     public function resultado()
@@ -137,8 +131,8 @@ class CalificacionesController extends Controller
         $mensaje = '';
 
         if (!empty($termino)) {
-            $calificaciones = $model->like('carne_alumno', $termino)
-                                    ->orLike('codigo_materia', $termino)
+            $calificaciones = $model->like('estudiante_id', $termino)
+                                    ->orLike('materia_id', $termino)
                                     ->orLike('periodo', $termino)
                                     ->findAll();
                                     

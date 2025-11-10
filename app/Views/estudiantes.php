@@ -11,7 +11,68 @@
 </head>
 
 <body>
+
+
+
     <div class="container-fluid">
+
+            <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gestión Escolar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- if role is admin show all menu items else show limited items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu_principal">Menú Principal</a>
+                    </li>
+                 <?php 
+                    $session = session();
+                    if($session->get('role') == 'admin'){
+                ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/estudiantes">Estudiantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/maestros">Maestros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/materias">Materias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/grados">Grados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/extracurriculares">Extracurriculares</a>
+                    </li>
+                
+                <?php
+                    } 
+                ?>
+                </ul>
+
+                <!-- if logged in show logout button -->
+                <?php 
+                    $session = session();
+                    if($session->get('activa')){
+                ?>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cerrar_sesion">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                <?php
+                    }
+                ?>
+
+            </div>
+        </div>
+    </nav>  
+
 
         <h1 class="text-center">Estudiantes</h1>
          <a href="<?= base_url('/'); ?>" class="btn btn-info">
@@ -88,11 +149,11 @@
                             <td><?= $estudiante['telefono']; ?></td>
                             <td><?= $estudiante['email']; ?></td>
                             <td><?= $estudiante['fechanacimiento']; ?></td>
-                            <td><?= $estudiante['codigo_grado']; ?></td>
+                            <td><?= $estudiante['grado_id']; ?></td>
                             <td>
-                                href="<?=base_url('eliminar_alumno/').$alumno['carne_alumno'];?>"
+                               <a href="<?=base_url('eliminar_estudiante/').$estudiante['id'];?>"
                                 class="btn btn-primary"><i class="bi bi-trash3"> Eliminar</i></a>
-                                <a href="<?=base_url('buscar_alumno/').$alumno['carne_alumno'];?>" 
+                                <a href="<?=base_url('buscar_estudiante/').$estudiante['id'];?>" 
                                 class="btn btn-info"><i class="bi bi-pencil-square"> Modificar</i> </a>
   
                             </td>

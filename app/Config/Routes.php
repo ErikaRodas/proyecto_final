@@ -7,9 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->post('iniciar_sesion', 'UsuariosController::index');
+$routes->post('iniciar_sesion', 'UsuariosController::login');
 
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
+
+$routes->get('menu_principal', 'UsuariosController::menuPrincipal');
 
 // Rutas del CRUD de Calificaciones (Helary)
 $routes->get('calificaciones', 'CalificacionesController::mostrar'); 
@@ -24,11 +26,16 @@ $routes->post('calificaciones/resultado', 'CalificacionesController::resultado')
 $routes->post('calificaciones/actualizar', 'CalificacionesController::actualizar');
 
 // Maestros
-$routes->get('maestros', 'MaestrosController::index');
-$routes->post('agregar_maestro', 'MaestrosController::agregarMaestro');
-$routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1');
-$routes->get('editar_maestro/(:num)', 'MaestrosController::buscarMaestro/$1'); 
-$routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
+$routes->get('maestros', 'MaestrosController::index'); 
+$routes->post('maestros/guardar', 'MaestrosController::agregarMaestro');
+$routes->get('maestros/guardar', 'MaestrosController::index'); 
+$routes->get('maestros/editar/(:segment)', 'MaestrosController::buscarMaestro/$1'); 
+$routes->get('maestros/eliminar/(:segment)', 'MaestrosController::eliminarMaestro/$1'); 
+$routes->post('maestros/modificar', 'MaestrosController::modificarMaestro'); 
+$routes->get('maestros/buscar', 'MaestrosController::buscar');
+$routes->post('maestros/resultado', 'MaestrosController::resultado');
+
+
 
 //Materias
 $routes->get('materias', 'MateriasController::index');
@@ -52,3 +59,11 @@ $routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
 
 $routes->post('agregar_grado', 'GradosController::agregarGrado');
 $routes->post('modificar_grado', 'GradosController::modificarGrado');
+
+// Actividades Extracurriculares
+$routes->get('extracurriculares', 'ExtracurricularesController::index');
+$routes->post('extracurriculares/store', 'ExtracurricularesController::store');
+$routes->post('extracurriculares/update', 'ExtracurricularesController::update');
+$routes->post('extracurriculares/delete/(:num)', 'ExtracurricularesController::delete/$1');
+//search extracurriculars
+$routes->get('extracurriculares/search', 'ExtracurricularesController::search');

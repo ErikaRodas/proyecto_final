@@ -10,7 +10,66 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
-<body class="container">
+<body >
+
+
+        <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gestión Escolar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- if role is admin show all menu items else show limited items -->
+                 <?php 
+                    $session = session();
+                    if($session->get('role') == 'admin'){
+                ?>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu_principal">Menú Principal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/estudiantes">Estudiantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/maestros">Maestros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/materias">Materias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/grados">Grados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/extracurriculares">Extracurriculares</a>
+                    </li>
+                </ul>
+                <?php
+                    } 
+                ?>
+                <!-- if logged in show logout button -->
+                <?php 
+                    $session = session();
+                    if($session->get('activa')){
+                ?>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cerrar_sesion">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                <?php
+                    }
+                ?>
+
+            </div>
+        </div>
+    </nav>  
+
+<div class="container mt-4">
+
+
     <h1 class="text-center">Grados</h1>
     
     <a href="<?= base_url('/'); ?>" class="btn btn-info">
@@ -58,12 +117,12 @@
                         <?php foreach ($datos as $grado): ?>
                         <tr>
                             <th><?= $grado['codigo_grado'];?></th>
-                            <td><?= $grado['nombre']; ?></td>
+                            <td><?= $grado['nombre_grado']; ?></td>
                             <td>
-                                <a href="<?=base_url('eliminar_grado/').$grado['codigo_grado'];?>"
+                                <a href="<?=base_url('eliminar_grado/').$grado['id'];?>"
                                 class="btn btn-primary"><i class="bi bi-trash3"> Eliminar</i></a>
 
-                                <a href="<?=base_url('buscar_grado/').$grado['codigo_grado'];?>" 
+                                <a href="<?=base_url('buscar_grado/').$grado['id'];?>" 
                                 class="btn btn-info"><i class="bi bi-pencil-square"> Modificar</i> </a>
 
                             </td>
@@ -74,6 +133,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">

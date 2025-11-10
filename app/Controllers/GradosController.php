@@ -16,17 +16,17 @@ class GradosController extends BaseController
         $grados = new GradosModel();
         $datos = [
             'codigo_grado' => $this->request->getPost('txt_codigo_grado'),
-            'nombre' => $this->request->getPost('txt_nombre')
+            'nombre_grado' => $this->request->getPost('txt_nombre')
         ];
         $grados->insert($datos);
-        return $this->index();
+        return redirect()->to(base_url('grados'));
     }
 
     public function eliminarGrado($codigo_grado)
     {
         $grados = new GradosModel();
         $grados->delete($codigo_grado);
-        return $this->index();
+        return redirect()->to(base_url('grados'));
     }
 
     public function buscarGrado($codigo_grado)
@@ -44,6 +44,6 @@ class GradosController extends BaseController
         ];
         $codigo = $this->request->getPost('txt_codigo_grado');
         $grados->update($codigo, $datos);
-        return $this->index();
+        return redirect()->to(base_url('grados'));
     }
 }

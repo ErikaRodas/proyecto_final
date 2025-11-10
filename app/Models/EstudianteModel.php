@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class EstudiantesModel extends Model
 {
     protected $table         = 'estudiantes';
-    protected $primaryKey    = 'carne_alumno';
+    protected $primaryKey    = 'id';
     protected $allowedFields = [
         'carne_alumno', 'nombre', 'apellido', 'direccion', 'telefono', 'email', 'fechanacimiento', 'codigo_grado',
     ];

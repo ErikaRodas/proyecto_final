@@ -81,4 +81,46 @@ class MaestrosController extends BaseController
         
         return redirect()->to(base_url('maestros'));
     }
+
+    public function buscar()
+    {
+        return view('form_buscar_maestro');
+    }
+
+    /**
+     * Procesa el término de búsqueda, consulta el modelo y muestra los resultados.
+     */
+    public function resultado()
+    {
+        $model = new \App\Models\MaestrosModel(); 
+        
+        $datos_post = $this->request->getPost();
+        $termino = trim($datos_post['termino_busqueda'] ?? '');
+
+        $maestros = [];
+        $mensaje = '';
+
+        if (!empty($termino)) {
+            $maestros = $model->like('nombre', $termino)
+                                    ->orLike('apellido', $termino)
+                                    ->orLike('codigo_maestro', $termino) 
+                                    ->findAll();
+                                    
+            if (empty($maestros)) {
+                $mensaje = '❌ No se encontraron maestros con el término: "' . esc($termino) . '".';
+            } else {
+                $mensaje = '✅ Mostrando ' . count($maestros) . ' resultados para: "' . esc($termino) . '".';
+            }
+
+        } else {
+            $maestros = $model->findAll(); 
+            $mensaje = 'Debe ingresar un término de búsqueda para ver resultados.';
+        }
+        
+        return view('maestros_view', [ 
+            'maestros' => $maestros,
+            'mensaje' => $mensaje,
+            'termino_busqueda_anterior' => $termino 
+        ]);
+    }
 }

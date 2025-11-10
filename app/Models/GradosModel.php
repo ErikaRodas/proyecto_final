@@ -7,9 +7,9 @@ use CodeIgniter\Model;
 class GradosModel extends Model
 {
     protected $table         = 'grados';
-    protected $primaryKey    = 'codigo_grado';
+    protected $primaryKey    = 'id';
     protected $allowedFields = [
-        'codigo_grado', 'nombre',
+        'codigo_grado', 'nombre_grado',
     ];
 
 }

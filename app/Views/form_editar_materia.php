@@ -32,7 +32,7 @@ if (!isset($materia)) {
 
                 <form action="<?= base_url('modificar_materia') ?>" method="post">
                     
-                    <input type="hidden" name="txt_codigo_materia" value="<?= $materia['codigo_materia'] ?>">
+                    <input type="hidden" name="txt_codigo_materia" value="<?= $materia['id'] ?>">
                     
                     <div class="mb-3">
                         <label for="txt_nombre_materia" class="form-label">Nombre de la Materia</label>
@@ -46,7 +46,7 @@ if (!isset($materia)) {
                             <option value="">-- Sin Maestro Asignado (Opcional) --</option>
                             <?php foreach ($maestros as $maestro): ?>
                                 <option value="<?= $maestro['codigo_maestro'] ?>" 
-                                    <?= ($maestro['codigo_maestro'] == $materia['codigo_maestro']) ? 'selected' : '' ?>>
+                                    <?= ($maestro['codigo_maestro'] == $materia['maestro_id']) ? 'selected' : '' ?>>
                                     <?= $maestro['nombre'] . ' ' . $maestro['apellido'] ?> (Cód: <?= $maestro['codigo_maestro'] ?>)
                                 </option>
                             <?php endforeach; ?>

@@ -87,13 +87,13 @@
         <form action="<?= base_url('calificaciones/guardar') ?>" method="post">
 
             <label for="carne_alumno">Carné del Estudiante (7 dígitos):</label>
-            <input type="text" name="carne_alumno"
-                value="<?= old('carne_alumno', $datos_anteriores['carne_alumno'] ?? '') ?>" placeholder="Ej: 2013001"
+            <input type="text" name="estudiante_id"
+                value="<?= old('estudiante_id', $datos_anteriores['estudiante_id'] ?? '') ?>" placeholder="Ej: 2013001"
                 required>
 
-            <label for="codigo_materia">Código de Materia:</label>
-            <input type="number" name="codigo_materia"
-                value="<?= old('codigo_materia', $datos_anteriores['codigo_materia'] ?? '') ?>" placeholder="Ej: 101"
+            <label for="materia_id">Código de Materia:</label>
+            <input type="number" name="materia_id"
+                value="<?= old('materia_id', $datos_anteriores['materia_id'] ?? '') ?>" placeholder="Ej: 101"
                 required>
 
             <label for="periodo">Período/Nota (Ej: Nota 1, Final):</label>

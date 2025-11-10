@@ -90,11 +90,12 @@
                             <td><?= $estudiante['fechanacimiento']; ?></td>
                             <td><?= $estudiante['codigo_grado']; ?></td>
                             <td>
-                                href="<?=base_url('eliminar_alumno/').$alumno['carne_alumno'];?>"
+                                <a href="<?=base_url('eliminar_alumno/').$alumno['carne_alumno'];?>"
                                 class="btn btn-primary"><i class="bi bi-trash3"> Eliminar</i></a>
                                 <a href="<?=base_url('buscar_alumno/').$alumno['carne_alumno'];?>" 
                                 class="btn btn-info"><i class="bi bi-pencil-square"> Modificar</i> </a>
-  
+
+                                
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -108,5 +109,5 @@
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
     </script>
 </body>
-</html>
 
+</html>

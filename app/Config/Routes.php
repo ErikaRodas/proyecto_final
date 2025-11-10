@@ -43,6 +43,8 @@ $routes->post('agregar_materia', 'MateriasController::agregarMateria');
 $routes->get('eliminar_materia/(:segment)', 'MateriasController::eliminarMateria/$1');
 $routes->get('editar_materia/(:segment)', 'MateriasController::editarMateria/$1');
 $routes->post('modificar_materia', 'MateriasController::modificarMateria');
+$routes->get('materia/buscar', 'MateriasController::buscar');
+$routes->post('materia/resultado', 'MateriasController::resultado');
 
 // Estudiantes
 $routes->get('estudiantes', 'EstudiantesController::index');

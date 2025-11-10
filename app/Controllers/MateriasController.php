@@ -105,4 +105,45 @@ class MateriasController extends BaseController
 		return redirect()->to(base_url('materias'));
 	}
 
+     public function buscar()
+    {
+        
+        
+        return view('form_buscar_materia');
+    }
+
+     public function resultado()
+    {
+        $model = new \App\Models\MateriasModel(); 
+        
+        $datos_post = $this->request->getPost();
+        $termino = trim($datos_post['termino_busqueda'] ?? '');
+
+        $materias = [];
+        $mensaje = '';
+
+        if (!empty($termino)) {
+            $materias = $model->like('nombre_materia', $termino)
+                                    ->orLike('codigo_materia', $termino)
+
+                                    ->findAll();
+                                    
+            if (empty($materias)) {
+                $mensaje = '❌ No se encontraron materias con el término: "' . esc($termino) . '".';
+            } else {
+                $mensaje = '✅ Mostrando ' . count($materias) . ' resultados para: "' . esc($termino) . '".';
+            }
+
+        } else {
+            $materias = $model->findAll(); 
+            $mensaje = 'Debe ingresar un término de búsqueda para ver resultados.';
+        }
+        
+        return view('materias_view', [ 
+            'materias' => $materias,
+            'mensaje' => $mensaje,
+            'termino_busqueda_anterior' => $termino 
+        ]);
+    }
+
 }

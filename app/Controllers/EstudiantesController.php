@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\EstudiantesModel;
 
 class EstudiantesController extends BaseController
-
+{
 
 public function index(): string
 {
@@ -71,4 +71,5 @@ public function agregarEstudiante()
         $estudiantes->update($codigo, $datos);
         return $this->index();
     }
+}
 }

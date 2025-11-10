@@ -1,11 +1,10 @@
-<<<<<<< HEAD
+
 <?php
 
 namespace App\Controllers;
 use App\Models\EstudiantesModel;
 
 class EstudiantesController extends BaseController
-=======
 
 public function index(): string
 {
@@ -16,7 +15,7 @@ public function index(): string
 
 
 public function agregarEstudiante()
->>>>>>> feature/mostrar-todos-estudiantes
+
 {
     public function index(): string
     {

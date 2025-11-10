@@ -24,7 +24,6 @@ $routes->post('calificaciones/resultado', 'CalificacionesController::resultado')
 $routes->post('calificaciones/actualizar', 'CalificacionesController::actualizar');
 
 // Maestros
-<<<<<<< HEAD
 $routes->get('maestros', 'MaestrosController::index'); 
 $routes->post('maestros/guardar', 'MaestrosController::agregarMaestro');
 $routes->get('maestros/guardar', 'MaestrosController::index'); 
@@ -35,13 +34,6 @@ $routes->get('maestros/buscar', 'MaestrosController::buscar');
 $routes->post('maestros/resultado', 'MaestrosController::resultado');
 
 
-=======
-$routes->get('maestros', 'MaestrosController::index');
-$routes->post('agregar_maestro', 'MaestrosController::agregarMaestro');
-$routes->get('eliminar_maestro/(:num)', 'MaestrosController::eliminarMaestro/$1');
-$routes->get('editar_maestro/(:num)', 'MaestrosController::buscarMaestro/$1'); 
-$routes->post('modificar_maestro', 'MaestrosController::modificarMaestro');
->>>>>>> main
 
 //Materias
 $routes->get('materias', 'MateriasController::index');

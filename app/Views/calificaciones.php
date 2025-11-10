@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Calificaciones</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
     :root {
         --color-primario: #007bff;
@@ -125,6 +127,65 @@
 </head>
 
 <body>
+
+    <div class="container">
+        <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gestión Escolar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- if role is admin show all menu items else show limited items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu_principal">Menú Principal</a>
+                    </li>
+                 <?php 
+                    $session = session();
+                    if($session->get('role') == 'admin'){
+                ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/estudiantes">Estudiantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/maestros">Maestros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/materias">Materias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/grados">Grados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/extracurriculares">Extracurriculares</a>
+                    </li>
+                
+                <?php
+                    } 
+                ?>
+                </ul>
+
+                <!-- if logged in show logout button -->
+                <?php 
+                    $session = session();
+                    if($session->get('activa')){
+                ?>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cerrar_sesion">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                <?php
+                    }
+                ?>
+
+            </div>
+        </div>
+    </nav>  
+
     <main class="crud-container">
 
         <h1>📊 Gestión de Calificaciones</h1>
@@ -172,17 +233,17 @@
                     <tbody>
                         <?php foreach ($calificaciones as $calificacion): ?>
                         <tr>
-                            <td><?= $calificacion['id_calificacion'] ?></td>
-                            <td><?= $calificacion['carne_alumno'] ?></td>
-                            <td><?= $calificacion['codigo_materia'] ?></td>
+                            <td><?= $calificacion['id'] ?></td>
+                            <td><?= $calificacion['estudiante_id'] ?></td>
+                            <td><?= $calificacion['materia_id'] ?></td>
                             <td><?= $calificacion['periodo'] ?></td>
                             <td><?= number_format($calificacion['puntuacion'], 2) ?></td>
                             <td>
-                                <a href="<?= base_url('calificaciones/editar/' . $calificacion['id_calificacion']) ?>">
+                                <a href="<?= base_url('calificaciones/editar/' . $calificacion['id']) ?>">
                                     <button class="btn-modificar-fila">✏️ Modificar</button>
                                 </a>
 
-                                <a href="<?= base_url('calificaciones/eliminar/' . $calificacion['id_calificacion']) ?>"
+                                <a href="<?= base_url('calificaciones/eliminar/' . $calificacion['id']) ?>"
                                     onclick="return confirm('¿Está seguro de que desea eliminar esta calificación?');">
                                     <button class="btn-eliminar-fila">🗑️ Eliminar</button>
                                 </a>
@@ -197,6 +258,7 @@
         </section>
 
     </main>
+    </div>
 </body>
 
 </html>

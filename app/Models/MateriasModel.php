@@ -12,7 +12,7 @@ class MateriasModel extends Model
     protected $primaryKey = 'id';
 
     protected $allowedFields = [
-        'codigo_maestro',
+        'maestro_id',
         'nombre_materia' 
     ];
 }

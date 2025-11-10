@@ -11,8 +11,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="bg-light">
+        <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gestión Escolar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- if role is admin show all menu items else show limited items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu_principal">Menú Principal</a>
+                    </li>
+                 <?php 
+                    $session = session();
+                    if($session->get('role') == 'admin'){
+                ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/estudiantes">Estudiantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/maestros">Maestros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/materias">Materias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/grados">Grados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/extracurriculares">Extracurriculares</a>
+                    </li>
+                
+                <?php
+                    } 
+                ?>
+                </ul>
+
+                <!-- if logged in show logout button -->
+                <?php 
+                    $session = session();
+                    if($session->get('activa')){
+                ?>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cerrar_sesion">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                <?php
+                    }
+                ?>
+
+            </div>
+        </div>
+    </nav>  
 
 <div class="container py-4">
+
+
+
 
     <h1 class="p-3 mb-4 rounded text-center text-dark bg-info bg-opacity-75 shadow-sm">
         <i class="bi bi-person-badge-fill me-2"></i> Gestión de Maestros

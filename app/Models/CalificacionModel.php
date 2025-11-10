@@ -10,23 +10,23 @@ class CalificacionModel extends Model
 
     // Campos permitidos para la inserción y actualización
     protected $allowedFields = [
-        'carne_alumno',     
-        'codigo_materia',   
+        'estudiante_id',     
+        'materia_id',   
         'periodo',          
         'puntuacion'        
     ];
 
     // Reglas de validación para asegurar la integridad de los datos
     protected $validationRules = [
-        'carne_alumno'      => 'required|integer|exact_length[7]', 
-        'codigo_materia'    => 'required|integer',
+        'estudiante_id'      => 'required|integer', 
+        'materia_id'    => 'required|integer',
         'periodo'           => 'required|max_length[50]',
         'puntuacion'        => 'required|decimal|greater_than_equal_to[0.00]|less_than_equal_to[100.00]', 
     ];
     
     // Mensajes de error
     protected $validationMessages = [
-        'carne_alumno' => [
+        'estudiante_id' => [
             'exact_length' => 'El Carné del Alumno debe tener exactamente 7 dígitos.',
         ],
         'puntuacion' => [

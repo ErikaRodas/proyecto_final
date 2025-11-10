@@ -6,17 +6,17 @@
     </head>
 <body>
     <main class="form-container">
-        <h1>🖊️ Modificar Calificación ID: <?= $calificacion['id_calificacion'] ?></h1>
+        <h1>🖊️ Modificar Calificación ID: <?= $calificacion['id'] ?></h1>
 
         <form action="<?= base_url('calificaciones/actualizar') ?>" method="post">
             
-            <input type="hidden" name="id_calificacion" value="<?= $calificacion['id_calificacion'] ?>">
+            <input type="hidden" name="id" value="<?= $calificacion['id'] ?>">
             
             <label for="carne_alumno">Carné del Estudiante (7 dígitos):</label>
             <input 
                 type="text" 
-                name="carne_alumno" 
-                value="<?= old('carne_alumno', $calificacion['carne_alumno'] ?? '') ?>" 
+                name="puntuacion" 
+                value="<?= old('puntuacion', $calificacion['puntuacion'] ?? '') ?>" 
                 required
             >
             

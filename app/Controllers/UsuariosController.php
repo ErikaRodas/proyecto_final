@@ -30,9 +30,14 @@ class UsuariosController extends Controller
             $tipo_usuario = $datos['tipo_usuario_id'];
             
             // 3. Credenciales válidas: Crear la sesión
+            if($tipo_usuario == 1){
+                $tipo_usuario = 'admin';
+            } else {
+                $tipo_usuario = 'estudiante';
+            }
             $sesion = [
                 'nombre' => $datos['nombre'],
-                'tipo' => $tipo_usuario, 
+                'role' => $tipo_usuario, 
                 'activa' => true
             ];
 

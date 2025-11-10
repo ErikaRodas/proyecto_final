@@ -95,7 +95,7 @@ class MateriasController extends BaseController
 		$datos_a_actualizar = [
 			'nombre_materia' => $nombre_materia,
 			
-			'codigo_maestro' => $codigo_maestro ?: null 
+			'maestro_id' => $codigo_maestro ?: null 
 		];
 
 		$materias->update($codigo_materia, $datos_a_actualizar);

@@ -59,3 +59,11 @@ $routes->get('buscar_grado/(:num)', 'GradosController::buscarGrado/$1');
 
 $routes->post('agregar_grado', 'GradosController::agregarGrado');
 $routes->post('modificar_grado', 'GradosController::modificarGrado');
+
+// Actividades Extracurriculares
+$routes->get('extracurriculares', 'ExtracurricularesController::index');
+$routes->post('extracurriculares/store', 'ExtracurricularesController::store');
+$routes->post('extracurriculares/update', 'ExtracurricularesController::update');
+$routes->post('extracurriculares/delete/(:num)', 'ExtracurricularesController::delete/$1');
+//search extracurriculars
+$routes->get('extracurriculares/search', 'ExtracurricularesController::search');

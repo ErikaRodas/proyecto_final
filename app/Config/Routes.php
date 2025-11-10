@@ -7,9 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->post('iniciar_sesion', 'UsuariosController::index');
+$routes->post('iniciar_sesion', 'UsuariosController::login');
 
 $routes->get('cerrar_sesion', 'UsuariosController::cerrarSesion');
+
+$routes->get('menu_principal', 'UsuariosController::menuPrincipal');
 
 // Rutas del CRUD de Calificaciones (Helary)
 $routes->get('calificaciones', 'CalificacionesController::mostrar'); 

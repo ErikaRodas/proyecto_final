@@ -88,11 +88,11 @@
                             <td><?= $estudiante['telefono']; ?></td>
                             <td><?= $estudiante['email']; ?></td>
                             <td><?= $estudiante['fechanacimiento']; ?></td>
-                            <td><?= $estudiante['codigo_grado']; ?></td>
+                            <td><?= $estudiante['grado_id']; ?></td>
                             <td>
-                                href="<?=base_url('eliminar_alumno/').$alumno['carne_alumno'];?>"
+                               <a href="<?=base_url('eliminar_estudiante/').$estudiante['id'];?>"
                                 class="btn btn-primary"><i class="bi bi-trash3"> Eliminar</i></a>
-                                <a href="<?=base_url('buscar_alumno/').$alumno['carne_alumno'];?>" 
+                                <a href="<?=base_url('buscar_estudiante/').$estudiante['id'];?>" 
                                 class="btn btn-info"><i class="bi bi-pencil-square"> Modificar</i> </a>
   
                             </td>

@@ -9,7 +9,7 @@ class MaestrosModel extends Model
 
     protected $table = 'maestros';
 
-    protected $primaryKey = 'codigo_maestro';
+    protected $primaryKey = 'id';
 
    
     protected $allowedFields = [

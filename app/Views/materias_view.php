@@ -68,8 +68,8 @@
                                 </td>
                                 <td>
                                  
-                                    <a href="<?= base_url('editar_materia/' . $materia['codigo_materia']); ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Modificar</a>
-                                    <a href="<?= base_url('eliminar_materia/' . $materia['codigo_materia']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta materia?');"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                                    <a href="<?= base_url('editar_materia/' . $materia['id']); ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Modificar</a>
+                                    <a href="<?= base_url('eliminar_materia/' . $materia['id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta materia?');"><i class="fas fa-trash-alt"></i> Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

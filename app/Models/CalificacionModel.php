@@ -5,7 +5,7 @@ use CodeIgniter\Model;
 class CalificacionModel extends Model
 {
     protected $table      = 'calificaciones';
-    protected $primaryKey = 'id_calificacion'; 
+    protected $primaryKey = 'id'; 
     protected $useTimestamps = false;
 
     // Campos permitidos para la inserción y actualización

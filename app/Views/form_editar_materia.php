@@ -46,7 +46,7 @@ if (!isset($materia)) {
                             <option value="">-- Sin Maestro Asignado (Opcional) --</option>
                             <?php foreach ($maestros as $maestro): ?>
                                 <option value="<?= $maestro['codigo_maestro'] ?>" 
-                                    <?= ($maestro['codigo_maestro'] == $materia['codigo_maestro']) ? 'selected' : '' ?>>
+                                    <?= ($maestro['maestro_id'] == $materia['codigo_maestro']) ? 'selected' : '' ?>>
                                     <?= $maestro['nombre'] . ' ' . $maestro['apellido'] ?> (Cód: <?= $maestro['codigo_maestro'] ?>)
                                 </option>
                             <?php endforeach; ?>

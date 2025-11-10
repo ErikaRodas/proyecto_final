@@ -26,14 +26,14 @@ class EstudiantesController extends BaseController
             'telefono'          => $this->request->getPost('txt_telefono'),
             'email'             => $this->request->getPost('txt_email'),
             'fechanacimiento'   => $this->request->getPost('txt_fechanacimiento'),
-            'codigo_grado'      => $this->request->getPost('txt_codigo_grado')
+            'grado_id'      => $this->request->getPost('txt_codigo_grado')
         ];
 
         // Intenta insertar los datos
         $estudiantes->insert($datos);
         
         // Regresa a la lista principal de estudiantes
-        return $this->index(); 
+        return redirect()->to(base_url('estudiantes'));
     }
 
     // Función para eliminar un estudiante por su carné
@@ -41,7 +41,7 @@ class EstudiantesController extends BaseController
     {
         $estudiantes = new EstudiantesModel();
         $estudiantes->delete($carne_alumno);
-        return $this->index();
+        return redirect()->to(base_url('estudiantes'));
     }
 
     // Función para buscar un estudiante y mostrar el formulario de edición
@@ -71,7 +71,7 @@ class EstudiantesController extends BaseController
         ];
         
         $estudiantes->update($codigo, $datos);
-        return $this->index();
+        return redirect()->to(base_url('estudiantes'));
     }
     
 } 

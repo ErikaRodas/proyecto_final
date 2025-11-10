@@ -58,12 +58,12 @@
                         <?php foreach ($datos as $grado): ?>
                         <tr>
                             <th><?= $grado['codigo_grado'];?></th>
-                            <td><?= $grado['nombre']; ?></td>
+                            <td><?= $grado['nombre_grado']; ?></td>
                             <td>
-                                <a href="<?=base_url('eliminar_grado/').$grado['codigo_grado'];?>"
+                                <a href="<?=base_url('eliminar_grado/').$grado['id'];?>"
                                 class="btn btn-primary"><i class="bi bi-trash3"> Eliminar</i></a>
 
-                                <a href="<?=base_url('buscar_grado/').$grado['codigo_grado'];?>" 
+                                <a href="<?=base_url('buscar_grado/').$grado['id'];?>" 
                                 class="btn btn-info"><i class="bi bi-pencil-square"> Modificar</i> </a>
 
                             </td>

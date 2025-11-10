@@ -22,7 +22,7 @@
                     <form action="<?= base_url('maestros/modificar') ?>" method="post">
                         
                         <!-- El valor del código de maestro es necesario para el update en el controlador -->
-                        <input type="hidden" name="txt_codigo_maestro" value="<?= esc($maestro['codigo_maestro']) ?>">
+                        <input type="hidden" name="txt_codigo_maestro" value="<?= esc($maestro['id']) ?>">
 
                         <div class="mb-3">
                             <label for="txt_codigo_maestro_display" class="form-label">Código de Maestro (No editable)</label>

@@ -30,7 +30,7 @@
                 <p class="lead">Bienvenido(a), <?= htmlspecialchars($nombre) ?>**</p>
                 <hr>
                 
-                <?php if ($tipo_usuario == 1): ?>
+                <?php if ($rol == 1): ?>
                     
                     <h3 class="mt-4 mb-3 text-success"> Gestión Completa (6 Tablas)</h3>
                     
@@ -43,7 +43,7 @@
                         <a href="<?= base_url('extracurriculares') ?>" class="list-group-item list-group-item-action list-group-item-success"> 6. Actividades Extracurriculares</a>
                     </div>
                 
-                <?php elseif ($tipo_usuario == 2):  ?>
+                <?php elseif ($rol == 2):  ?>
                     
                     <h3 class="mt-4 mb-3 text-info">Consulta de Información</h3>
                     

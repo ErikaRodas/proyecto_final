@@ -18,7 +18,7 @@ class MateriasController extends BaseController
         
         $datos['materias'] = $materias
             ->select('materias.*, maestros.nombre as nombre_maestro, maestros.apellido as apellido_maestro')
-            ->join('maestros', 'maestros.codigo_maestro = materias.codigo_maestro', 'left') // LEFT JOIN para incluir materias sin maestro (NULL)
+            ->join('maestros', 'maestros.codigo_maestro = materias.maestro_id', 'left') // LEFT JOIN para incluir materias sin maestro (NULL)
             ->findAll();
             
        
@@ -37,7 +37,7 @@ class MateriasController extends BaseController
         $maestro_id_para_db = ($codigo_maestro) ? $codigo_maestro : null;
         
         $datos_a_insertar = [
-            'codigo_maestro' => $maestro_id_para_db, 
+            'maestro_id' => $maestro_id_para_db, 
             'nombre_materia' => $this->request->getPost('txt_nombre_materia')
         ];
         

@@ -10,7 +10,7 @@ class UsuariosController extends Controller
     /**
      * Procesa la solicitud de inicio de sesión (POST del formulario).
      */
-    public function index()
+    public function login()
     {
         $email = $this->request->getPost('txt_usuario');
         $contra = $this->request->getPost('txt_contra');
@@ -19,36 +19,27 @@ class UsuariosController extends Controller
         $usuarios = new UsuariosModel();
         
         // 2. Buscar al usuario en la base de datos, incluyendo el carné
-        $datos = $usuarios->select('nombre, tipo_usuario_id, carne_alumno') 
-            ->where('email', $email)
-            ->where('password', $contra)
-            ->first();
+        $datos = $usuarios->getUsuarioByEmailAndPassword($email, $contra);
+
+        if(!$datos){
+            session()->setFlashdata('error', 'Correo o contraseña incorrectos. Intente de nuevo.'); 
+            return redirect()->to(base_url(''));
+        }
             
-        if($datos){
+    
             $tipo_usuario = $datos['tipo_usuario_id'];
             
             // 3. Credenciales válidas: Crear la sesión
             $sesion = [
                 'nombre' => $datos['nombre'],
                 'tipo' => $tipo_usuario, 
-                'activa' => true,
-                'carne' => $datos['carne_alumno'] // Guardar el carné (será NULL para Admin)
-            ]; 
-            session()->set($sesion);
+                'activa' => true
+            ];
 
-            // 4. Redirigir según el rol (1=Admin, 2=Estudiante)
-            if($tipo_usuario == 1 || $tipo_usuario == 2){
-                return view('menu_principal'); 
-            }else{
-                // Tipo de usuario no autorizado
-                session()->destroy();
-                return redirect()->to(base_url('')); 
-            }
-       }else{
-    // 5. Credenciales inválidas
-           session()->setFlashdata('error', 'Correo o contraseña incorrectos. Intente de nuevo.'); 
-            return redirect()->to(base_url(''));
-        }
+            session()->set($sesion);
+   
+            return redirect()->to(base_url('menu_principal'));
+
     }
     
     /**
@@ -58,4 +49,14 @@ class UsuariosController extends Controller
         session()->destroy();
         return redirect()->to(base_url(''));
     }
+
+
+    /**
+     * Muestra el menú principal después del inicio de sesión.
+     */
+    public function menuPrincipal(){
+        $data['rol'] = session()->get('tipo');
+        return view('menu_principal', $data); 
+    }
+
 }

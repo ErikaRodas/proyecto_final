@@ -108,9 +108,9 @@
                     <td> <?=$maestro['email'];?> </td>
                     <td> 
                         <!-- Botón Eliminar -->
-    <a href="<?= base_url('maestros/eliminar/' .$maestro['codigo_maestro']) ?>" class="btn btn-sm btn-danger me-1" onclick="return confirm('¿Está seguro de eliminar el registro <?= $maestro['codigo_maestro'] ?>? Esta acción no se puede deshacer.');">Eliminar</a>
+    <a href="<?= base_url('maestros/eliminar/' .$maestro['id']) ?>" class="btn btn-sm btn-danger me-1" onclick="return confirm('¿Está seguro de eliminar el registro <?= $maestro['codigo_maestro'] ?>? Esta acción no se puede deshacer.');">Eliminar</a>
          
-    <a href="<?= base_url('maestros/editar/' . $maestro['codigo_maestro']); ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Modificar</a>
+    <a href="<?= base_url('maestros/editar/' . $maestro['id']); ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Modificar</a>
                     </td>
                 </tr>
                 <?php
@@ -121,7 +121,7 @@
             </table>
             <!-- Mostrar mensaje si no hay resultados después de una búsqueda -->
             <?php if (isset($mensaje) && count($lista_maestros) === 0): ?>
-                <p class="text-center text-muted">Intente con un término de búsqueda diferente o <a href="<?= base_url('maestro/mostrar') ?>">vea el listado completo</a>.</p>
+                <p class="text-center text-muted">Intente con un término de búsqueda diferente o <a href="<?= base_url('maestros') ?>">vea el listado completo</a>.</p>
             <?php endif; ?>
             </div>
         </div>

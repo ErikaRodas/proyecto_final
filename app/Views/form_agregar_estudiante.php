@@ -90,6 +90,11 @@
                             <td><?= $estudiante['fechanacimiento']; ?></td>
                             <td><?= $estudiante['codigo_grado']; ?></td>
                             <td>
+                                <a href="<?=base_url('eliminar_alumno/').$alumno['carne_alumno'];?>"
+                                class="btn btn-primary"><i class="bi bi-trash3"> Eliminar</i></a>
+                                <a href="<?=base_url('buscar_alumno/').$alumno['carne_alumno'];?>" 
+                                class="btn btn-info"><i class="bi bi-pencil-square"> Modificar</i> </a>
+
                                 
                             </td>
                         </tr>

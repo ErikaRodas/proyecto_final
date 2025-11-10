@@ -78,6 +78,7 @@
             $rol_texto = ($tipo_usuario == 'admin') ? 'Administrador(a)' : 'Estudiante';
 
             //print_r($session->get()); // Para depuración, muestra todos los datos de la sesión
+            
     ?>
     
     <div class="container mt-5">

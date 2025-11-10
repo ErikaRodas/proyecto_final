@@ -63,7 +63,9 @@
                                 <a href="<?=base_url('eliminar_grado/').$grado['codigo_grado'];?>"
                                 class="btn btn-primary"><i class="bi bi-trash3"> Eliminar</i></a>
 
-                                
+                                <a href="<?=base_url('buscar_grado/').$grado['codigo_grado'];?>" 
+                                class="btn btn-info"><i class="bi bi-pencil-square"> Modificar</i> </a>
+
                             </td>
                         </tr>
                         <?php endforeach; ?>

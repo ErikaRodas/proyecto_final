@@ -69,3 +69,18 @@ $routes->post('extracurriculares/update', 'ExtracurricularesController::update')
 $routes->post('extracurriculares/delete/(:num)', 'ExtracurricularesController::delete/$1');
 //search extracurriculars
 $routes->get('extracurriculares/search', 'ExtracurricularesController::search');
+
+
+//estudiantes
+$routes->post('estudiantes/create', 'EstudiantesController::create');
+$routes->put('estudiantes/update/(:num)', 'EstudiantesController::update/$1');
+$routes->delete('estudiantes/delete/(:num)', 'EstudiantesController::delete/$1');
+//search estudiantes
+$routes->get('estudiantes/search', 'EstudiantesController::search');
+
+//grados
+$routes->post('grados/create', 'GradosController::create');
+$routes->post('grados/update/(:num)', 'GradosController::update/$1');
+$routes->get('grados/delete/(:num)', 'GradosController::delete/$1');
+//search grados
+$routes->get('grados/search', 'GradosController::search');

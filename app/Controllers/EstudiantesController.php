@@ -9,10 +9,78 @@ class EstudiantesController extends BaseController
     public function index(): string
     {
         $estudiantes = new EstudiantesModel();
-        $datos['datos'] = $estudiantes->findAll();
+        $query = $this->request->getGet('query');
+        if ($query) {
+            $datos['estudiantes'] = $estudiantes->like('carne_alumno', $query)
+                                                ->orLike('nombre', $query)
+                                                ->orLike('apellido', $query)
+                                                ->findAll();
+        } else {
+
+
+        $datos['estudiantes'] = $estudiantes->findAll();
+        }
         // Asegúrate de que esta vista exista en app/Views/estudiantes.php
         return view('estudiantes', $datos);
     }
+
+    //function to create a new student post method
+    public function create()
+    {
+        // insert datos into database
+        $estudiantes = new EstudiantesModel();
+        //carne aleatorio 7 numeros
+        $carneAleatorio = rand(1000000, 9999999);
+        $data = [
+            'carne_alumno'      => $carneAleatorio,
+            'nombre'            => $this->request->getPost('nombre'),
+            'apellido'          => $this->request->getPost('apellido'),
+            'direccion'         => $this->request->getPost('direccion'),
+            'telefono'          => $this->request->getPost('telefono'),
+            'email'             => $this->request->getPost('email'),
+            'fechanacimiento'   => $this->request->getPost('fechanacimiento'),
+            'grado_id'          => $this->request->getPost('grado_id'),
+        ];
+
+        //if not inserted, return message error
+        if (!$estudiantes->insert($data)) {
+            return redirect()->to(base_url('estudiantes'))->with('error', 'Error al agregar el estudiante');
+        }else {
+            return redirect()->to(base_url('estudiantes'))->with('success', 'Estudiante agregado exitosamente');
+        }
+
+    }
+
+    public function update($id){
+        $estudiantes = new EstudiantesModel();
+        $data = [
+            'nombre'            => $this->request->getPost('nombre'),
+            'apellido'          => $this->request->getPost('apellido'),
+            'direccion'         => $this->request->getPost('direccion'),
+            'telefono'          => $this->request->getPost('telefono'),
+            'email'             => $this->request->getPost('email'),
+            'fechanacimiento'   => $this->request->getPost('fechanacimiento'),
+            'grado_id'          => $this->request->getPost('grado_id'),
+        ];
+
+        //if not updated, return message error
+        if (!$estudiantes->update($id, $data)) {
+            return redirect()->to(base_url('estudiantes'))->with('error', 'Error al actualizar el estudiante');
+        }else {
+            return redirect()->to(base_url('estudiantes'))->with('success', 'Estudiante actualizado exitosamente');
+        }
+    }
+
+        public function delete($id){
+            $estudiantes = new EstudiantesModel();
+    
+            //if not deleted, return message error
+            if (!$estudiantes->delete($id)) {
+                return redirect()->to(base_url('estudiantes'))->with('error', 'Error al eliminar el estudiante');
+            }else {
+                return redirect()->to(base_url('estudiantes'))->with('success', 'Estudiante eliminado exitosamente');
+            }
+        }
 
     // Función para agregar un nuevo estudiante
     public function agregarEstudiante()
